@@ -1,0 +1,59 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+
+<Meta title="Documentation/1.Introduction" />
+
+# Project Hierarchy
+
+In react you may prefere having 100 folders in "components" folder instead of grouping it into parent folders.<br/>
+Using visual studio code, you can easily access a component by search it by name using "Ctrl+P".<br/>
+
+**Don't be afraid of big lists of folders** in Visual Studio code.
+Once you are working on the good item, you may not need to search things out of it.
+
+## Project
+
+┣ 📂public : Resources accessible via HTTP like png, text...<br />
+┣ 📂src<br />
+
+┃ ┣ 📂components : react component list<br />
+┃ ┃ ┣ 📜Component.js : react component core JS<br />
+┃ ┃ ┣ 📜Component.stories.js : Stories of the component shown on the Storybook<br />
+┃ ┃ ┗ 📜Component.scss : Style of the component (can also be Component.style.js if you use css-in-js)<br />
+
+┃ ┣ 📂redux : Used to centralize asynchronous fetch or push and business work (datas shared between components)<br />
+┃ ┃ ┣ 📂modules<br />
+┃ ┃ ┃ ┣ 📂main (work item : like 'user' if you work on user datas)<br />
+┃ ┃ ┃ ┃ ┣ 📜mainAction.js : Functions called by the components to change the store state<br />
+┃ ┃ ┃ ┃ ┣ 📜mainAPI.js Functions with business logic that uses Repository to fetch or push datas to endpoints<br />
+┃ ┃ ┃ ┃ ┣ 📜mainReducer.js : Store application datas (state) and the only state setter Function<br />
+┃ ┃ ┃ ┃ ┗ 📜mainRepository.js : Object that setup metadatas for network requests<br />
+┃ ┃ ┗ 📜store.js : Setup the redux with extensions like thunk (don't touch if not needed)<br />
+
+┃ ┣ 📂resources<br />
+
+┃ ┣ 📂screens : Part of the web page that regroup components (it may be using composition)<br />
+┃ ┃ ┣ 📂app : Core component<br />
+┃ ┃ ┃ ┣ 📜App.js : Core page<br />
+┃ ┃ ┃ ┗ 📜Router.js : Set routes of the app<br />
+┃ ┃ ┗ 📂main : some structure as common component<br />
+┃ ┃ ┃ ┣ 📜MainScreen.js<br />
+┃ ┃ ┃ ┣ 📜MainScreen.stories.js<br />
+┃ ┃ ┃ ┗ 📜MainScreen.scss<br />
+
+┃ ┣ 📂utils<br />
+┃ ┃ ┣ 📂stories : General stories<br />
+┃ ┃ ┃ ┣ 📂Setup<br />
+┃ ┃ ┃ ┃ ┗ 📜Setup.stories.mdx : current story<br />
+┃ ┃ ┃ ┣ 📂snapshots<br />
+┃ ┃ ┃ ┗ 📜Storyshots.test.js : generate HTML snapshots of components, to compare it each time the test run<br />
+┃ ┃ ┣ 📂test<br />
+┃ ┃ ┃ ┗ 📜.jest-test-results.json : auto generated test<br />
+┃ ┃ ┣ 📂translation<br />
+┃ ┃ ┃ ┣ 📜i18n.js : config of translation extension<br />
+┃ ┃ ┃ ┗ 📜yup.js : translations for yup (forms) extension<br />
+┃ ┃ ┗ 📜serviceWorker.js : running background (don't touch it)<br />
+
+┃ ┣ 📜index.js : page loaded first<br />
+┃ ┗ 📜setupTests.js<br />
+
+┗ 📜.file : files and folders with dot at the begining are config files for extensions and tools<br />

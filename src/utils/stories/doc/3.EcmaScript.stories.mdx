@@ -1,0 +1,120 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+
+<Meta title="Documentation/3.ECMAScript" />
+
+# ES6
+
+If you come from the old world of javascript, you may read this page to understand the code written in this project and on internet thread.
+
+ECMAScript is an evolution of javascript with some changes to make it more readable.
+This language is transcoded by the babel plugin into commonJS, understandable by any browser.
+
+### Functions
+
+- **Declaration** :
+
+```js
+// The old way
+function () { FunctionContent(); }
+// The new way
+(props) => { FunctionContent(); }
+```
+
+- **Declaration with return**
+
+```js
+// The old way
+function name(x) {
+	return x + 1
+}
+// The new way
+const name = (x) => x + 1
+// It may looks like this when returning an object
+const name = (prop) => ({ id: prop.id, value: prop.value })
+```
+
+### Spread Operator
+
+The spread Operation, written `...` allows to copy the content of an object or an array in the declaration of an other object.
+For the Array, the order will be respected.
+
+```js
+let myObject = { value: 'ddd' }
+let myObject2 = { ...myObject, moreValue: 34 }
+// will result in { value: 'ddd', moreValue: 34 }
+
+let myArray = [{ value: 'ddd' }]
+let myArray2 = [...myArray, { value: 'ddd2' }]
+// will result in [{ value: 'ddd' }, { value: 'ddd2' } ]
+
+let myArray = [{ value: 'ddd' }]
+let myArray2 = [{ value: 'ddd2' }, ...myArray]
+// will result in [{ value: 'ddd2' }, { value: 'ddd' } ]
+```
+
+### Destructuring
+
+Destructuring is a way to access properties of an object without referencing it each time
+
+```js
+let myObject = { value1: '1', value2: '2', value3: '3' }
+myFunc(myObject)
+
+// Without destructuring
+function myFunc(myObject) => {
+	console.log(myObject.value1) // Access to the value and log it : 1
+}
+
+// With destructuring
+function myFunc(myObject) => {
+	const { value1, value2, value3 } = myObject
+	console.log(value1) // Access to the value and log it : 1
+}
+
+// With destructuring in props : will access object attributes of the object passed by props
+function myFunc({ value1, value2, value3 }) => {
+	console.log(value1) // Access to the value and log it : 1
+}
+```
+
+### Array functions
+
+ES6 comes with some tools to make JS arrays easier to use. I only show you two examples here because I may be using them in the project.
+
+```js
+const arrayOfValues = [1, 2, 3]
+// .map(func()) will run the prop passed function for each object in the array
+const arrayOfValuesMapped = arrayOfValues.map(function (value) {
+	return value++
+})
+// arrayOfValuesMapped = [2,3,4]
+
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present']
+// .filter(func())
+const result = words.filter((word) => word.length > 6)
+//result = ["exuberant", "destruction", "present"]
+```
+
+### JSX
+
+JSX is the way to write HTML code using JS. It always has one root parent.
+It is written the same way you write HTML. To use JS in JSX : `{...javascriptCode...}`
+
+```js
+const arrayOfValues = [1, 2, 3]
+const jsxVar = (
+	<div class="mainDiv">
+		{arrayOfValues.map((value) => (
+			<div>{value}</div>
+		))}
+	</div>
+)
+
+/** jsxVar value :
+ * <div class='mainDiv'>
+ *  <div>1</div>
+ *  <div>2</div>
+ *  <div>3</div>
+ * </div>
+ **/
+```
