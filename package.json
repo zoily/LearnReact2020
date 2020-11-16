@@ -42,7 +42,7 @@
 		"storybook": "start-storybook -p 9009 -s public",
 		"build-locales": "node scripts/locales.js",
 		"build-storybook": "build-storybook -s public",
-		"chromatic": "npx chromatic --project-token b5jhrzr7wzt"
+		"chromatic": "npx chromatic --project-token b5jhrzr7wzt --exit-zero-on-changes"
 	},
 	"devDependencies": {
 		"@storybook/addon-essentials": "6.0.26",
