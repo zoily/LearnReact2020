@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './resources/assets/scss/index.scss'
 import App from './screens/app/App'
 import './utils/translation/i18n'
 import './utils/translation/yup'
